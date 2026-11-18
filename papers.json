@@ -1,6 +1,6 @@
 [
   {
-    "class": "9",
+    "class": "10",
     "title": "Sound chapter test",
     "chapter": "Sound",
     "kind": "Chapter test",
@@ -8,5 +8,13 @@
     "duration": "45",
     "file": "/science-learning-hub/pdfs/class9-sound-chapter-test-20-marks.pdf"
   },
-  {}
+  {
+    "class": "10",
+    "title": "Test ",
+    "chapter": "Acid base and Salt  Metal and Non Metal and electricity ",
+    "kind": "Practice test ",
+    "marks": 30,
+    "duration": "90 min",
+    "file": "/science-learning-hub/pdfs/Class_10_Science_Question_Paper_Clean.pdf"
+  }
 ]
