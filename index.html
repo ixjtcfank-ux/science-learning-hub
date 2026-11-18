@@ -1,109 +1,185 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#102b47"><meta name="description" content="Free Science revision notes, original CBSE-style practice papers and interactive quizzes for Classes 8, 9 and 10.">
-<title>Science Learning Hub | Classes 8, 9 and 10</title><link rel="stylesheet" href="style.css"><style>
-/* Collapsible class folders for the PDF library */
-.paper-folders{display:grid;gap:15px}
-.paper-folder{background:#fff;border:1px solid #dbe6f0;border-radius:15px;overflow:hidden;box-shadow:0 5px 18px #102b4707}
-.paper-folder[open]{border-color:#9ccfda}
-.paper-folder summary{display:flex;align-items:center;gap:15px;cursor:pointer;padding:20px;list-style:none}
-.paper-folder summary::-webkit-details-marker{display:none}
-.paper-folder summary:focus-visible{outline:3px solid #29b6c7;outline-offset:-3px}
-.folder-emoji{font-size:29px;flex:0 0 auto}
-.folder-heading{display:flex;flex:1;min-width:0;flex-direction:column}
-.folder-heading strong{font-size:19px;color:#102b47}
-.folder-heading small{font-size:13px;color:#617588}
-.folder-action{font-size:12px;color:#087e9b;font-weight:800;white-space:nowrap}
-.paper-folder[open] .folder-action span{display:inline-block;transform:rotate(180deg)}
-.paper-folder .paper-grid{grid-template-columns:repeat(auto-fit,minmax(275px,1fr));padding:0 18px 18px;gap:12px}
-.paper-folder .paper-card{background:#f8fbfe}
-.paper-note{color:#617588;font-size:13px;margin-top:18px}
-@media(max-width:600px){.paper-folder summary{padding:16px;gap:10px}.folder-heading strong{font-size:17px}.folder-heading small{font-size:11px}.folder-action{font-size:11px}.paper-folder .paper-grid{grid-template-columns:1fr;padding:0 12px 15px}.paper-folder .paper-card{align-items:flex-start;flex-wrap:wrap}.paper-folder .paper-card b{margin-left:43px}}
-</style></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#112b45">
+  <meta name="description" content="Science Learning Hub: free chapter-wise Science notes, CBSE-style practice papers, chapter tests and interactive quizzes for Classes 8, 9 and 10.">
+  <meta property="og:title" content="Science Learning Hub | Learn. Practise. Improve.">
+  <meta property="og:description" content="Study notes, class-wise Science PDFs and instant-feedback quizzes for Classes 8, 9 and 10.">
+  <meta property="og:type" content="website">
+  <title>Science Learning Hub | Classes 8–10</title>
+  <link rel="stylesheet" href="style.css?v=20261118-professional">
+</head>
 <body>
-<a class="skip" href="#classes">Skip to lessons</a>
-<header class="top"><div class="wrap nav"><a class="brand" href="#home"><span class="brand-icon" aria-hidden="true">⚛</span><span>SCIENCE<span class="brand-light">HUB</span><small>LEARN • EXPLORE • DISCOVER</small></span></a><button class="menu" id="menu" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button><nav id="nav" aria-label="Main menu"><a href="#classes">Classes</a><a href="#notes">Notes</a><a href="#papers">Papers & PDFs</a><a href="#quizzes">Quizzes</a><a href="#plan">Study plan</a></nav></div></header>
-<main id="home">
-<section class="hero"><div class="wrap hero-inner"><div><span class="eyebrow">YOUR DIGITAL SCIENCE CLASSROOM</span><h1>Curiosity starts <em>here.</em></h1><p>Understand concepts, solve real-life problems and practise with instant-feedback quizzes. Built for curious learners in Classes 8–10.</p><div class="actions"><a class="btn primary" href="#notes">Read chapter notes →</a><a class="btn outline" href="#quizzes">Take a quiz</a></div><div class="hero-facts"><span>✓ 12 topics</span><span>✓ 60 MCQs</span><span>✓ Free worksheets</span></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="atom">⚛</div><div class="float-card f1">🧪 Chemistry</div><div class="float-card f2">⚡ Physics</div><div class="float-card f3">🌱 Biology</div></div></div></section>
-<section class="wrap section" id="classes"><div class="section-head"><span class="kicker">START LEARNING</span><h2>Choose your class</h2><p>Select your class to load the matching notes and quizzes.</p></div><div class="class-grid"><button type="button" class="class-card" data-class="8"><span class="class-icon">🔬</span><span class="class-label">CLASS</span><strong>08</strong><span>Foundations, atoms and mirrors</span><b>Start learning →</b></button><button type="button" class="class-card" data-class="9"><span class="class-icon">🧬</span><span class="class-label">CLASS</span><strong>09</strong><span>Cells, mixtures, motion and sound</span><b>Start learning →</b></button><button type="button" class="class-card" data-class="10"><span class="class-icon">⚡</span><span class="class-label">CLASS</span><strong>10</strong><span>Reactions, electricity and more</span><b>Start learning →</b></button></div></section>
-<section class="band" id="notes"><div class="wrap section"><div class="section-head"><span class="kicker">STUDY LIBRARY</span><h2>Chapter-wise revision notes</h2><p>Understand a concept, see a solved example and check your understanding.</p></div><div class="toolbar"><label for="notesClass">Class</label><select id="notesClass"><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option></select><label for="chapter">Topic</label><select id="chapter"></select></div><article class="content-card" id="notesContent" aria-live="polite"></article><div class="note-actions"><button class="btn small" type="button" id="printNotes">Print / save notes as PDF</button><button class="btn btn-subtle" type="button" id="quizThis">Quiz me on this topic →</button></div></div></section>
-<section class="wrap section" id="papers">
-  <div class="section-head"><span class="kicker">EXAM PRACTICE</span><h2>Practice papers &amp; PDF downloads</h2><p>Choose your class folder to find its question papers. These are teacher-created practice papers, not official CBSE papers.</p></div>
-  <div class="paper-folders">
-    <details class="paper-folder" id="class8-papers">
-      <summary><span class="folder-emoji" aria-hidden="true">📘</span><span class="folder-heading"><strong>Class 8</strong><small>Science practice papers</small></span><span class="folder-action">Open folder <span aria-hidden="true">▾</span></span></summary>
-      <div class="paper-grid">
-        <a class="paper-card" href="class8-practice.pdf" download><span aria-hidden="true">📄</span><div><strong>Science Practice Paper</strong><small>20 marks • Atoms, mirrors &amp; force</small></div><b>Download PDF ↓</b></a>
+  <a class="skip" href="#classes">Skip to learning resources</a>
+  <header class="top" id="page-top">
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Science Learning Hub home">
+        <span class="brand-symbol" aria-hidden="true">
+          <svg viewBox="0 0 44 44" width="32" height="32" fill="none"><circle cx="22" cy="22" r="3.7" fill="currentColor"/><ellipse cx="22" cy="22" rx="18" ry="7.5" stroke="currentColor" stroke-width="2.2"/><ellipse cx="22" cy="22" rx="18" ry="7.5" transform="rotate(60 22 22)" stroke="currentColor" stroke-width="2.2"/><ellipse cx="22" cy="22" rx="18" ry="7.5" transform="rotate(120 22 22)" stroke="currentColor" stroke-width="2.2"/></svg>
+        </span>
+        <span class="brand-copy"><strong>SCIENCE<span>HUB</span></strong><small>LEARN · EXPLORE · DISCOVER</small></span>
+      </a>
+      <button class="menu" id="menu" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+      <nav id="nav" aria-label="Main navigation">
+        <a href="#classes">Classes</a><a href="#notes">Notes</a><a href="#papers">Practice papers</a><a href="#quizzes">Quizzes</a><a href="#plan">Study plan</a>
+        <a class="nav-cta" href="#papers">Explore resources <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-content">
+          <div class="hero-eyebrow"><span class="eyebrow-dot"></span> FREE SCIENCE LEARNING · CLASSES 8–10</div>
+          <h1 id="hero-title">Learn science.<br><span>Think deeper.</span></h1>
+          <p>Clear chapter notes, thoughtfully designed practice papers and quizzes that help you understand the <em>why</em> behind every answer.</p>
+          <div class="actions">
+            <a class="btn primary" href="#classes">Start learning <span aria-hidden="true">↗</span></a>
+            <a class="btn outline" href="#papers">Browse practice papers <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero-facts"><span><b aria-hidden="true">✓</b> Class-wise resources</span><span><b aria-hidden="true">✓</b> Free PDF tests</span><span><b aria-hidden="true">✓</b> Instant quiz feedback</span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="science-board">
+            <div class="board-top"><span class="board-kicker">THE SCIENCE LAB</span><span class="board-spark">✳</span></div>
+            <div class="board-diagram">
+              <svg viewBox="0 0 420 322" role="presentation" fill="none">
+                <defs><linearGradient id="orb-grad" x1="28" y1="26" x2="390" y2="325" gradientUnits="userSpaceOnUse"><stop stop-color="#89e4d9"/><stop offset="1" stop-color="#72aaff"/></linearGradient><radialGradient id="core-glow"><stop stop-color="#B5FFF1"/><stop offset="1" stop-color="#52CCBC"/></radialGradient></defs>
+                <circle cx="211" cy="158" r="137" stroke="#CDE4F4" stroke-opacity=".32" stroke-dasharray="4 9"/>
+                <circle cx="211" cy="158" r="105" stroke="#CDE4F4" stroke-opacity=".20"/>
+                <ellipse cx="211" cy="158" rx="144" ry="56" stroke="url(#orb-grad)" stroke-width="3"/>
+                <ellipse cx="211" cy="158" rx="144" ry="56" stroke="url(#orb-grad)" stroke-width="3" transform="rotate(60 211 158)"/>
+                <ellipse cx="211" cy="158" rx="144" ry="56" stroke="url(#orb-grad)" stroke-width="3" transform="rotate(120 211 158)"/>
+                <circle cx="211" cy="158" r="28" fill="url(#core-glow)"/><circle cx="211" cy="158" r="14" fill="#133B56" opacity=".68"/>
+                <circle cx="352" cy="158" r="8" fill="#FFF0AC"/><circle cx="139" cy="34" r="7" fill="#83EEDE"/><circle cx="139" cy="283" r="7" fill="#A3C7FF"/>
+                <circle cx="211" cy="158" r="41" stroke="#D0FAF3" stroke-opacity=".28"/><circle cx="211" cy="158" r="57" stroke="#D0FAF3" stroke-opacity=".15"/>
+              </svg>
+            </div>
+            <div class="board-bottom"><span class="board-number">01 / 03</span><span>Observe • Question • Understand</span></div>
+          </div>
+          <div class="float-topic float-topic-a"><span class="topic-icon topic-icon-chem">⚗</span><span><strong>Chemistry</strong><small>Explore matter</small></span></div>
+          <div class="float-topic float-topic-b"><span class="topic-icon topic-icon-phy">ϟ</span><span><strong>Physics</strong><small>Discover forces</small></span></div>
+          <div class="float-topic float-topic-c"><span class="topic-icon topic-icon-bio">✳</span><span><strong>Biology</strong><small>Understand life</small></span></div>
+        </div>
       </div>
-    </details>
-    <details class="paper-folder" id="class9-papers" open>
-      <summary><span class="folder-emoji" aria-hidden="true">📗</span><span class="folder-heading"><strong>Class 9</strong><small>Chapter tests and science practice papers</small></span><span class="folder-action">Open folder <span aria-hidden="true">▾</span></span></summary>
-      <div class="paper-grid">
-        <a class="paper-card" href="class9-practice.pdf" download><span aria-hidden="true">📄</span><div><strong>Science Practice Paper</strong><small>25 marks • Cell, mixtures, motion &amp; sound</small></div><b>Download PDF ↓</b></a>
-        <a class="paper-card" href="journey-inside-the-atom-20-marks.pdf" download><span aria-hidden="true">⚛️</span><div><strong>Journey Inside the Atom — Chapter Test</strong><small>20 marks • 45 minutes • No internal choices</small></div><b>Download PDF ↓</b></a>
+    </section>
+
+    <div class="wrap quick-access" aria-label="Quick learning links">
+      <a class="quick-link" href="#notes"><span class="quick-icon quick-1" aria-hidden="true">01</span><span><strong>Explore notes</strong><small>Concepts made clear</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a>
+      <a class="quick-link" href="#papers"><span class="quick-icon quick-2" aria-hidden="true">02</span><span><strong>Download papers</strong><small>Practise at your pace</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a>
+      <a class="quick-link" href="#quizzes"><span class="quick-icon quick-3" aria-hidden="true">03</span><span><strong>Take a quiz</strong><small>See your score instantly</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a>
+    </div>
+
+    <section class="wrap section" id="classes">
+      <div class="section-head"><div class="section-headline"><span class="kicker"><i></i> YOUR LEARNING JOURNEY</span><h2>Find your starting point.</h2><p>Choose a class and go straight to its chapter notes and quizzes.</p></div><span class="section-index" aria-hidden="true">01 / 04</span></div>
+      <div class="class-grid">
+        <button type="button" class="class-card class-eight" data-class="8"><span class="class-topline"><span class="class-icon" aria-hidden="true">◉</span><span class="class-badge">FOUNDATION</span></span><span class="class-label">SCIENCE · CLASS</span><strong>08</strong><span class="class-desc">Build core concepts through observation and discovery.</span><span class="card-bottom">Explore Class 8 <span aria-hidden="true">↗</span></span></button>
+        <button type="button" class="class-card class-nine" data-class="9"><span class="class-topline"><span class="class-icon" aria-hidden="true">⌁</span><span class="class-badge">EXPLORATION</span></span><span class="class-label">SCIENCE · CLASS</span><strong>09</strong><span class="class-desc">Connect scientific ideas to the world around you.</span><span class="card-bottom">Explore Class 9 <span aria-hidden="true">↗</span></span></button>
+        <button type="button" class="class-card class-ten" data-class="10"><span class="class-topline"><span class="class-icon" aria-hidden="true">⚡</span><span class="class-badge">EXAM READY</span></span><span class="class-label">SCIENCE · CLASS</span><strong>10</strong><span class="class-desc">Develop confidence with precise and purposeful practice.</span><span class="card-bottom">Explore Class 10 <span aria-hidden="true">↗</span></span></button>
       </div>
-    </details>
-    <details class="paper-folder" id="class10-papers">
-      <summary><span class="folder-emoji" aria-hidden="true">📕</span><span class="folder-heading"><strong>Class 10</strong><small>CBSE-style science practice papers</small></span><span class="folder-action">Open folder <span aria-hidden="true">▾</span></span></summary>
-      <div class="paper-grid">
-        <a class="paper-card" href="class10-practice.pdf" download><span aria-hidden="true">📄</span><div><strong>Science Practice Paper</strong><small>30 marks • Acids, metals &amp; electricity</small></div><b>Download PDF ↓</b></a>
+    </section>
+
+    <section class="band" id="notes">
+      <div class="wrap section">
+        <div class="section-head"><div class="section-headline"><span class="kicker"><i></i> THE STUDY LIBRARY</span><h2>Understand the concept.</h2><p>Revision notes with key ideas, worked examples and a question to think about.</p></div><span class="section-index" aria-hidden="true">02 / 04</span></div>
+        <div class="study-layout">
+          <div class="study-main">
+            <div class="study-controls"><div class="toolbar"><label for="notesClass">Select class</label><select id="notesClass"><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option></select><label for="chapter">Choose topic</label><select id="chapter"></select></div></div>
+            <article class="content-card" id="notesContent" aria-live="polite"></article>
+            <div class="note-actions"><button class="btn small" type="button" id="printNotes">Print / save notes as PDF <span aria-hidden="true">↓</span></button><button class="btn btn-subtle" type="button" id="quizThis">Quiz me on this topic <span aria-hidden="true">→</span></button></div>
+          </div>
+          <aside class="study-aside"><span class="aside-overline">LEARN WITH PURPOSE</span><span class="aside-deco" aria-hidden="true">✦</span><h3>Small steps.<br>Big ideas.</h3><p>Don't just memorise facts. Ask what they mean, where they apply and how the evidence fits together.</p><div class="aside-rule"></div><div class="aside-tip"><span aria-hidden="true">✓</span> Read the key concept</div><div class="aside-tip"><span aria-hidden="true">✓</span> Solve one example</div><div class="aside-tip"><span aria-hidden="true">✓</span> Test your understanding</div></aside>
+        </div>
       </div>
-    </details>
-  </div>
-  <p class="paper-note">Tap your class to open its papers. Newly published PDFs will appear in the correct class folder automatically.</p>
-</section>
-<section class="band" id="quizzes"><div class="wrap section"><div class="section-head"><span class="kicker">TEST YOURSELF</span><h2>Topic-wise MCQ quizzes</h2><p>Five questions per topic, explanations after every answer and your score at the end. No login needed.</p></div><div class="quiz-shell"><div class="toolbar"><label for="quizClass">Class</label><select id="quizClass"><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option></select><label for="quizTopic">Topic</label><select id="quizTopic"></select></div><div class="quiz-meta"><span id="bestScore" aria-live="polite"></span><button class="btn small" type="button" id="restart">Restart ↻</button></div><div id="quizContent" aria-live="polite"></div></div></div></section>
-<section class="wrap section" id="plan"><div class="section-head"><span class="kicker">STUDY SMART</span><h2>A simple 25-minute routine</h2><p>Use the website for learning, not just memorising.</p></div><div class="steps"><div><strong>01</strong><h3>Read • 10 min</h3><p>Review definitions, formulas and one solved example in the chapter notes.</p></div><div><strong>02</strong><h3>Apply • 10 min</h3><p>Try the “think and apply” question and answer it without looking at the solution.</p></div><div><strong>03</strong><h3>Test • 5 min</h3><p>Complete the topic quiz, review explanations and note your mistakes.</p></div></div><p class="sources">Teacher reference: <a href="https://cbseacademic.nic.in/curriculum_2027.html" target="_blank" rel="noopener noreferrer">CBSE curriculum 2026–27</a> · <a href="https://cbseacademic.nic.in/SQP_CLASSX_2026-27.html" target="_blank" rel="noopener noreferrer">Class 10 official sample-paper page</a>. Lesson summaries and practice questions are original starter material.</p></section>
-<section class="closing wrap section"><h2>Keep asking questions. Keep discovering.</h2><p>Science becomes easier when you practise thinking, not only remembering.</p><a class="btn primary" href="#classes">Choose another class ↑</a></section>
-</main><footer><div class="wrap foot"><span>⚛ Science Learning Hub</span><span>Free student learning resource • Classes 8, 9 & 10</span></div></footer>
-<script src="script.js"></script>
-<script>
-/* Free teacher editor integration: added PDFs are listed in papers.json. */
-(function () {
-  'use strict';
-  const classFolders = {
-    '8': document.querySelector('#class8-papers .paper-grid'),
-    '9': document.querySelector('#class9-papers .paper-grid'),
-    '10': document.querySelector('#class10-papers .paper-grid')
-  };
-  async function showNewPapers() {
-    try {
-      const response = await fetch('papers.json', {cache:'no-store'});
-      if (!response.ok) throw new Error('papers.json not available');
-      const papers = await response.json();
-      if (!Array.isArray(papers)) throw new Error('Invalid papers list');
-      papers.forEach((paper) => {
-        if (!paper || typeof paper !== 'object') return;
-        const target = classFolders[String(paper.class || '')];
-        const filename = typeof paper.file === 'string' ? paper.file.trim() : '';
-        if (!target || !filename) return;
-        let url;
-        try {url = new URL(filename, window.location.href);} catch (_) {return;}
-        if (!['http:', 'https:'].includes(url.protocol) || url.origin !== window.location.origin) return;
-        const card = document.createElement('a');
-        card.className = 'paper-card';
-        card.href = url.href;
-        card.setAttribute('download','');
-        const emoji = document.createElement('span');
-        emoji.setAttribute('aria-hidden','true');
-        emoji.textContent = '📄';
-        const body = document.createElement('div');
-        const heading = document.createElement('strong');
-        heading.textContent = paper.title || paper.chapter || 'Science PDF';
-        const meta = document.createElement('small');
-        const parts = [paper.chapter, paper.kind, paper.marks ? String(paper.marks) + ' marks' : '', paper.duration].filter(Boolean);
-        meta.textContent = parts.join(' • ') || 'Downloadable PDF';
-        const action = document.createElement('b');
-        action.textContent = 'Download PDF ↓';
-        body.append(heading, meta);
-        card.append(emoji, body, action);
-        target.appendChild(card);
-      });
-    } catch (error) {
-      console.warn('Additional teacher PDFs could not be loaded:', error.message);
+    </section>
+
+    <section class="wrap section" id="papers">
+      <div class="section-head"><div class="section-headline"><span class="kicker"><i></i> THE RESOURCE LIBRARY</span><h2>Practise with confidence.</h2><p>Question papers, chapter tests and printable PDF resources, organised by class.</p></div><span class="section-index" aria-hidden="true">03 / 04</span></div>
+      <div class="library-toolbar"><div><strong>Browse practice papers</strong><span>Teacher-created resources · Not official CBSE question papers</span></div><label class="search-field"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6" stroke="currentColor" stroke-width="2"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input type="search" id="paperSearch" placeholder="Search papers or chapters" aria-label="Search papers or chapters"></label></div>
+      <div class="paper-folders">
+        <details class="paper-folder" id="class8-papers">
+          <summary><span class="folder-emoji" aria-hidden="true">08</span><span class="folder-heading"><strong>Class 8 <span class="paper-count">1 resource</span></strong><small>Foundation concepts and practice papers</small></span><span class="folder-action">Browse files <span class="folder-chevron" aria-hidden="true">⌄</span></span></summary>
+          <div class="paper-grid">
+            <a class="paper-card" href="class8-practice.pdf" download><span class="file-icon" aria-hidden="true">PDF</span><div><strong>Science Practice Paper</strong><small>20 marks · Atoms, mirrors &amp; force</small></div><b>Download <span aria-hidden="true">↗</span></b></a>
+          </div>
+        </details>
+        <details class="paper-folder" id="class9-papers" open>
+          <summary><span class="folder-emoji" aria-hidden="true">09</span><span class="folder-heading"><strong>Class 9 <span class="paper-count">2 resources</span></strong><small>Chapter tests, concepts and exam practice</small></span><span class="folder-action">Browse files <span class="folder-chevron" aria-hidden="true">⌄</span></span></summary>
+          <div class="paper-grid">
+            <a class="paper-card" href="class9-practice.pdf" download><span class="file-icon" aria-hidden="true">PDF</span><div><strong>Science Practice Paper</strong><small>25 marks · Cell, mixtures, motion &amp; sound</small></div><b>Download <span aria-hidden="true">↗</span></b></a>
+            <a class="paper-card" href="journey-inside-the-atom-20-marks.pdf" download><span class="file-icon" aria-hidden="true">PDF</span><div><strong>Journey Inside the Atom — Chapter Test</strong><small>20 marks · 45 minutes</small></div><b>Download <span aria-hidden="true">↗</span></b></a>
+          </div>
+        </details>
+        <details class="paper-folder" id="class10-papers">
+          <summary><span class="folder-emoji" aria-hidden="true">10</span><span class="folder-heading"><strong>Class 10 <span class="paper-count">1 resource</span></strong><small>CBSE-style practice and focused revision</small></span><span class="folder-action">Browse files <span class="folder-chevron" aria-hidden="true">⌄</span></span></summary>
+          <div class="paper-grid">
+            <a class="paper-card" href="class10-practice.pdf" download><span class="file-icon" aria-hidden="true">PDF</span><div><strong>Science Practice Paper</strong><small>30 marks · Acids, metals &amp; electricity</small></div><b>Download <span aria-hidden="true">↗</span></b></a>
+          </div>
+        </details>
+      </div>
+      <p class="paper-note" id="paperStatus" role="status" aria-live="polite">Choose a class folder to open its resources. New PDFs published through Pages CMS appear here automatically.</p>
+    </section>
+
+    <section class="band quiz-band" id="quizzes">
+      <div class="wrap section">
+        <div class="section-head"><div class="section-headline"><span class="kicker"><i></i> CHECK YOUR UNDERSTANDING</span><h2>Make every answer count.</h2><p>Short topic-wise quizzes with explanations and a score at the end. No login needed.</p></div><span class="section-index" aria-hidden="true">04 / 04</span></div>
+        <div class="quiz-layout"><div class="quiz-shell"><div class="toolbar"><label for="quizClass">Select class</label><select id="quizClass"><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option></select><label for="quizTopic">Choose topic</label><select id="quizTopic"></select></div><div class="quiz-meta"><span id="bestScore" aria-live="polite"></span><button class="btn small" type="button" id="restart">Restart ↻</button></div><div id="quizContent" aria-live="polite"></div></div><aside class="quiz-aside"><span class="aside-overline">A BETTER WAY TO PRACTISE</span><h3>Try. Learn.<br>Improve.</h3><p>Each quiz has 5 questions. See an explanation after answering and track your personal best on this device.</p><div class="quiz-steps"><span><b>01</b> Pick a topic</span><span><b>02</b> Answer five questions</span><span><b>03</b> Review your score</span></div></aside></div>
+      </div>
+    </section>
+
+    <section class="wrap section study-plan" id="plan"><div class="section-head"><div class="section-headline"><span class="kicker"><i></i> BUILD A CONSISTENT HABIT</span><h2>25 minutes. Meaningful progress.</h2><p>A short routine to turn reading into real understanding.</p></div></div><div class="steps"><div><span class="step-no">01 <i>—</i> 10 MIN</span><h3>Read with purpose</h3><p>Focus on key ideas, definitions and a solved example.</p></div><div><span class="step-no">02 <i>—</i> 10 MIN</span><h3>Apply the concept</h3><p>Answer the thinking question without looking at the solution.</p></div><div><span class="step-no">03 <i>—</i> 5 MIN</span><h3>Check what you know</h3><p>Try a quiz and learn from the explanations.</p></div></div><p class="sources">Curriculum references: <a href="https://cbseacademic.nic.in/curriculum_2027.html" target="_blank" rel="noopener noreferrer">CBSE 2026–27 curriculum</a> · <a href="https://cbseacademic.nic.in/SQP_CLASSX_2026-27.html" target="_blank" rel="noopener noreferrer">CBSE Class 10 sample papers</a>. This site contains independent teacher-created practice material.</p></section>
+    <section class="wrap closing"><div><span class="kicker">KEEP EXPLORING</span><h2>Great questions lead to great discoveries.</h2><p>Take the next step in your learning journey today.</p></div><a class="btn primary" href="#classes">Explore classes <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer><div class="wrap foot"><div class="foot-brand"><strong>⚛ SCIENCEHUB</strong><span>Learn · Explore · Discover</span></div><div class="foot-links"><a href="#classes">Classes</a><a href="#notes">Notes</a><a href="#papers">Practice papers</a><a href="#quizzes">Quizzes</a></div><p>Free Science learning resources for Classes 8, 9 and 10.</p></div></footer>
+  <!-- KEEP: existing lessons and quizzes are loaded from the original script.js. -->
+  <script src="script.js"></script>
+  <!-- KEEP: your Pages CMS 'papers.json' publishing flow. -->
+  <script>
+  (function(){
+    'use strict';
+    const folderByClass={8:document.querySelector('#class8-papers .paper-grid'),9:document.querySelector('#class9-papers .paper-grid'),10:document.querySelector('#class10-papers .paper-grid')};
+    const paperSearch=document.getElementById('paperSearch');
+    const paperStatus=document.getElementById('paperStatus');
+    function cardUrl(card){try{return new URL(card.getAttribute('href'),location.href).pathname;}catch(e){return card.getAttribute('href')||''}}
+    function updateCounts(){document.querySelectorAll('.paper-folder').forEach(folder=>{const n=folder.querySelectorAll('.paper-card').length;const el=folder.querySelector('.paper-count');if(el)el.textContent=n+' '+(n===1?'resource':'resources')})}
+    function filterPapers(){const q=paperSearch.value.toLocaleLowerCase().trim();let matches=0;document.querySelectorAll('.paper-folder').forEach(folder=>{let any=false;folder.querySelectorAll('.paper-card').forEach(card=>{const match=!q||card.textContent.toLocaleLowerCase().includes(q);card.hidden=!match;if(match){any=true;matches++}});folder.hidden=!!q&&!any;if(q&&any)folder.open=true});paperStatus.textContent=q?(matches?matches+' matching '+(matches===1?'resource':'resources')+' found.':'No matching paper. Try a different chapter or class.'):'Choose a class folder to open its resources. New PDFs published through Pages CMS appear here automatically.'}
+    paperSearch.addEventListener('input',filterPapers);
+    updateCounts();
+    async function loadPublishedPapers(){
+      try{
+        const response=await fetch('papers.json',{cache:'no-store'});
+        if(!response.ok)throw new Error('papers.json unavailable');
+        const entries=await response.json();
+        if(!Array.isArray(entries))throw new Error('papers.json should contain an array');
+        const existing=new Set(Array.from(document.querySelectorAll('.paper-card'),cardUrl));
+        for(const paper of entries){
+          if(!paper||typeof paper!=='object')continue;
+          const folder=folderByClass[String(paper.class||'')];
+          const path=typeof paper.file==='string'?paper.file.trim():'';
+          if(!folder||!path)continue;
+          let url;try{url=new URL(path,location.href)}catch(e){continue}
+          // Only accept same-origin PDFs inside this published website.
+          if(url.origin!==location.origin||!url.pathname.toLowerCase().endsWith('.pdf')||!url.pathname.startsWith('/science-learning-hub/'))continue;
+          if(existing.has(url.pathname))continue;
+          existing.add(url.pathname);
+          const a=document.createElement('a');a.className='paper-card';a.href=url.href;a.setAttribute('download','');
+          const icon=document.createElement('span');icon.className='file-icon';icon.setAttribute('aria-hidden','true');icon.textContent='PDF';
+          const body=document.createElement('div');const heading=document.createElement('strong');heading.textContent=paper.title||paper.chapter||'Science PDF';
+          const meta=document.createElement('small');const details=[paper.chapter,paper.kind,paper.marks?paper.marks+' marks':'',paper.duration?(String(paper.duration).toLowerCase().includes('min')?paper.duration:paper.duration+' min'):''].filter(Boolean);meta.textContent=details.join(' · ')||'Study resource';
+          const link=document.createElement('b');link.textContent='Download ↗';body.append(heading,meta);a.append(icon,body,link);folder.append(a);
+        }
+      }catch(error){console.warn('Could not fetch additional teacher PDFs:',error.message)}
+      updateCounts();filterPapers();
     }
-  }
-  showNewPapers();
-})();
-</script>
-</body></html>
+    loadPublishedPapers();
+    // Preserve keyboard escape and close menu when clicking outside on small screens.
+    const menu=document.getElementById('menu'),nav=document.getElementById('nav');
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&nav.classList.contains('open')){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.focus()}});
+  })();
+  </script>
+</body>
+</html>
