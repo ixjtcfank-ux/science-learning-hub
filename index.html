@@ -50,10 +50,60 @@
       </div>
     </details>
   </div>
-  <p class="paper-note">Tap a class folder to expand it, then download the test you want to practise.</p>
+  <p class="paper-note">Tap your class to open its papers. Newly published PDFs will appear in the correct class folder automatically.</p>
 </section>
 <section class="band" id="quizzes"><div class="wrap section"><div class="section-head"><span class="kicker">TEST YOURSELF</span><h2>Topic-wise MCQ quizzes</h2><p>Five questions per topic, explanations after every answer and your score at the end. No login needed.</p></div><div class="quiz-shell"><div class="toolbar"><label for="quizClass">Class</label><select id="quizClass"><option value="8">Class 8</option><option value="9">Class 9</option><option value="10">Class 10</option></select><label for="quizTopic">Topic</label><select id="quizTopic"></select></div><div class="quiz-meta"><span id="bestScore" aria-live="polite"></span><button class="btn small" type="button" id="restart">Restart ↻</button></div><div id="quizContent" aria-live="polite"></div></div></div></section>
 <section class="wrap section" id="plan"><div class="section-head"><span class="kicker">STUDY SMART</span><h2>A simple 25-minute routine</h2><p>Use the website for learning, not just memorising.</p></div><div class="steps"><div><strong>01</strong><h3>Read • 10 min</h3><p>Review definitions, formulas and one solved example in the chapter notes.</p></div><div><strong>02</strong><h3>Apply • 10 min</h3><p>Try the “think and apply” question and answer it without looking at the solution.</p></div><div><strong>03</strong><h3>Test • 5 min</h3><p>Complete the topic quiz, review explanations and note your mistakes.</p></div></div><p class="sources">Teacher reference: <a href="https://cbseacademic.nic.in/curriculum_2027.html" target="_blank" rel="noopener noreferrer">CBSE curriculum 2026–27</a> · <a href="https://cbseacademic.nic.in/SQP_CLASSX_2026-27.html" target="_blank" rel="noopener noreferrer">Class 10 official sample-paper page</a>. Lesson summaries and practice questions are original starter material.</p></section>
 <section class="closing wrap section"><h2>Keep asking questions. Keep discovering.</h2><p>Science becomes easier when you practise thinking, not only remembering.</p><a class="btn primary" href="#classes">Choose another class ↑</a></section>
 </main><footer><div class="wrap foot"><span>⚛ Science Learning Hub</span><span>Free student learning resource • Classes 8, 9 & 10</span></div></footer>
-<script src="script.js"></script></body></html>
+<script src="script.js"></script>
+<script>
+/* Free teacher editor integration: added PDFs are listed in papers.json. */
+(function () {
+  'use strict';
+  const classFolders = {
+    '8': document.querySelector('#class8-papers .paper-grid'),
+    '9': document.querySelector('#class9-papers .paper-grid'),
+    '10': document.querySelector('#class10-papers .paper-grid')
+  };
+  async function showNewPapers() {
+    try {
+      const response = await fetch('papers.json', {cache:'no-store'});
+      if (!response.ok) throw new Error('papers.json not available');
+      const papers = await response.json();
+      if (!Array.isArray(papers)) throw new Error('Invalid papers list');
+      papers.forEach((paper) => {
+        if (!paper || typeof paper !== 'object') return;
+        const target = classFolders[String(paper.class || '')];
+        const filename = typeof paper.file === 'string' ? paper.file.trim() : '';
+        if (!target || !filename) return;
+        let url;
+        try {url = new URL(filename, window.location.href);} catch (_) {return;}
+        if (!['http:', 'https:'].includes(url.protocol) || url.origin !== window.location.origin) return;
+        const card = document.createElement('a');
+        card.className = 'paper-card';
+        card.href = url.href;
+        card.setAttribute('download','');
+        const emoji = document.createElement('span');
+        emoji.setAttribute('aria-hidden','true');
+        emoji.textContent = '📄';
+        const body = document.createElement('div');
+        const heading = document.createElement('strong');
+        heading.textContent = paper.title || paper.chapter || 'Science PDF';
+        const meta = document.createElement('small');
+        const parts = [paper.chapter, paper.kind, paper.marks ? String(paper.marks) + ' marks' : '', paper.duration].filter(Boolean);
+        meta.textContent = parts.join(' • ') || 'Downloadable PDF';
+        const action = document.createElement('b');
+        action.textContent = 'Download PDF ↓';
+        body.append(heading, meta);
+        card.append(emoji, body, action);
+        target.appendChild(card);
+      });
+    } catch (error) {
+      console.warn('Additional teacher PDFs could not be loaded:', error.message);
+    }
+  }
+  showNewPapers();
+})();
+</script>
+</body></html>

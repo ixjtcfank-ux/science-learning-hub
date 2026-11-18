@@ -1,0 +1,34 @@
+SCIENCE LEARNING HUB - FREE TEACHER PDF EDITOR
+================================================
+Keep your existing live website. These three files are an ADD-ON.
+
+PART A - ONE-TIME SETUP
+1. Extract teacher-editor-update.zip in Samsung My Files.
+2. In your existing GitHub repository science-learning-hub, upload these 3 files to its TOP LEVEL:
+     index.html  (replace the old version)
+     papers.json
+     .pages.yml  (a hidden file beginning with a dot)
+   Do not upload the ZIP itself. Keep style.css, script.js and your existing PDFs.
+3. Commit changes to the MAIN branch.
+4. Open https://app.pagescms.org and sign in with GitHub.
+5. Allow the Pages CMS GitHub App access ONLY to your science-learning-hub repository.
+6. Open your repository in Pages CMS and choose main.
+7. Open "My Science PDFs" and add a new item.
+8. Choose class, enter chapter/title, upload a PDF and Save.
+9. After GitHub Pages publishes the change, refresh your live website. A card for the new PDF appears under the chosen class automatically.
+
+If the dotfile .pages.yml is hidden on Samsung My Files:
+  My Files > Settings > Show hidden system files, OR
+  GitHub repo > Add file > Create new file; name it .pages.yml, paste the file text, then commit.
+
+IMPORTANT
+- Only the GitHub account you authorize can edit content via Pages CMS.
+- Students use the same free website link; there is no student login.
+- This adds automatic listing for NEW PDFs. Existing papers remain on the site.
+- Do not upload private student information or teacher answer keys to public GitHub.
+- Host remains GitHub Pages, editor is hosted at app.pagescms.org.
+
+Your site:
+https://ixjtcfank-ux.github.io/science-learning-hub/
+Your repository:
+https://github.com/ixjtcfank-ux/science-learning-hub
