@@ -1,0 +1,40 @@
+media:
+  input: pdfs
+  output: /science-learning-hub/pdfs
+  extensions: [pdf]
+content:
+  - name: papers
+    label: Science PDFs
+    type: file
+    path: papers.json
+    format: json
+    list: true
+    fields:
+      - name: class
+        label: Class
+        type: select
+        required: true
+        options:
+          values: ["8", "9", "10"]
+      - name: title
+        label: Test title
+        type: string
+        required: true
+      - name: chapter
+        label: Chapter name
+        type: string
+      - name: kind
+        label: Material type
+        type: string
+      - name: marks
+        label: Marks
+        type: number
+      - name: duration
+        label: Duration
+        type: string
+      - name: file
+        label: PDF file
+        type: file
+        required: true
+        options:
+          extensions: [pdf]
